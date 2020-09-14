@@ -1,0 +1,30 @@
+{
+    "update_id": 122365,
+    "message": {
+        "message_id": 7,
+        "from": {
+            "id": 12233544,
+            "is_bot": false,
+            "first_name": "Carlos",
+            "last_name": "Rian",
+            "username": "",
+            "language_code": "en"
+        },
+        "chat": {
+            "id": 12233554,
+            "first_name": "Carlos",
+            "last_name": "Rian",
+            "username": "",
+            "type": "private"
+        },
+        "date": 122333445,
+        "text": "/start",
+        "entities": [
+            {
+                "offset": 0,
+                "length": 6,
+                "type": "bot_command"
+            }
+        ]
+    }
+}
