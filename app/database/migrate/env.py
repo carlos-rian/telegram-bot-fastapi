@@ -9,8 +9,8 @@ import os, sys
 from dotenv import load_dotenv
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv("/home/carlos-rian/Documentos/project/telegram-bot-async/.env")
 sys.path.append(BASE_DIR)
+load_dotenv(".env")
 
 
 # this is the Alembic Config object, which provides

@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 
-load_dotenv("/home/carlos-rian/Documentos/project/telegram-bot-async/.env")
+load_dotenv(".env")
 
 from fastapi import FastAPI, Depends
 from app.database import instance
