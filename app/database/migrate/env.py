@@ -9,7 +9,7 @@ import os, sys
 from dotenv import load_dotenv
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-load_dotenv("/.env")
+load_dotenv("/home/carlos-rian/Documentos/project/telegram-bot-async/.env")
 sys.path.append(BASE_DIR)
 
 
@@ -32,7 +32,7 @@ fileConfig(config.config_file_name)
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from model_db import model
+from model import model
 
 target_metadata = model.metadata
 

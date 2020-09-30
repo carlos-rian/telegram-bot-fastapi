@@ -1,0 +1,12 @@
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
+
+
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app 
+ADD . /app
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]

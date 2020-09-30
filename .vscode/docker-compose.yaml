@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  api:
+    build: ./app/
+    container_name: fastapi
+    ports:
+      - 5000:5000
+    env_file:
+      - .env
+    links:
+      - db_postgresql_telegram
+      
+  db_postgresql_telegram:
+    image: postgres:12-alpine
+    volumes:
+      - ./.data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secretpassword
+      - POSTGRES_DB=telegram
+    ports:
+      - 5450:5432
+    #restart: always

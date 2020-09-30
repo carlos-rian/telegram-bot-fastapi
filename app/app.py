@@ -1,23 +1,23 @@
-from fastapi import FastAPI
+from dotenv import load_dotenv
 
-from app.schema_api import RequestTelegramWebhook, ResponseTelegramWebhook
-from app.database_api import instance_db
-from app.database_api import connect_db
-from app.database_api import model_db
-from app.database_api.model_db.model import telegram_from, telegram_chat, telegram_messages
+load_dotenv("/home/carlos-rian/Documentos/project/telegram-bot-async/.env")
 
+from fastapi import FastAPI, Depends
+from app.database import instance
+from app.database import connect
+from app.database import model
+from app.schema import RequestTelegramWebhook, ResponseTelegramWebhook
+from app.controller import new_message
 
 app = FastAPI(title="Telegram Async - Fast Api")
 
-model_db.init_app()
-db = instance_db.init_app()
-connect_db.init_app(app=app, database=db)
+model.init_app()
+db = instance.init_app()
+connect.init_app(app=app, database=db)
 
 
-@app.post("/", response_model=ResponseTelegramWebhook, status_code=201)
-async def read_root(telegram: RequestTelegramWebhook):
-    # TODO
-    query_from = telegram_from.insert().values(telegram.message.from_.dict())
-    await db.execute(query=query_from)
-    return {"Message": "World"}
+@app.post("/{bot_name}", status_code=201, response_description="New Request")
+async def root(bot_name: str, telegram: RequestTelegramWebhook):
+    """Endpoint root for receiving request"""
+    return await new_message(telegram=telegram, db=db)
 
